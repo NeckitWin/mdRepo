@@ -8,7 +8,7 @@ const Profile = () => {
     ];
 
     return (
-        <section className="bg-[#1E1A1A] w-[619px] flex justify-center items-center flex-col gap-9 py-12 rounded-[10px]">
+        <section className="bg-[#1E1A1A] w-[619px] flex justify-center items-center flex-col gap-9 py-12 rounded-[10px] shadow-sm shadow-neutral-700">
             <h2 className="text-5xl text-[#ECE7F6] font-extrabold">NeckitWin</h2>
             <img  className="w-[409px] h-[409px] rounded-full object-cover" src="https://images.unsplash.com/photo-1622932720890-15cdc9364a55?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0" alt="profile picture" />
             <ul className="flex flex-col gap-4">
