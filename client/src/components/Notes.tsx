@@ -11,7 +11,7 @@ const Notes = () => {
 
     return (
         <section className="bg-[#1E1A1A] rounded-[10px] shadow-sm shadow-neutral-700 p-6">
-            <div className="space-y-4 h-[740px] overflow-y-auto">
+            <div className="space-y-4 h-[700px] overflow-y-auto">
                 {notesList.map((note) => (
                     <div key={note.id} className="bg-[#252525] p-4 rounded-lg border border-neutral-700 hover:border-neutral-600 transition-colors cursor-pointer">
                         <div className="flex justify-between items-start mb-2">

@@ -1,4 +1,4 @@
-import Search from "./components/Search"
+import Menu from "./components/Menu"
 import Profile from "./components/Profile"
 import Notes from "./components/Notes"
 
@@ -9,7 +9,7 @@ const App = () => {
         <Profile />
       </div>
       <div className="w-full flex flex-col gap-4">
-        <Search />
+        <Menu />
         <Notes />
       </div>
     </div>
