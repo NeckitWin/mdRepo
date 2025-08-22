@@ -1,6 +1,6 @@
 import Menu from "./components/Menu"
 import Profile from "./components/Profile"
-import Notes from "./components/Notes"
+import NoteList from "./components/NoteList"
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       </div>
       <div className="w-full flex flex-col gap-4">
         <Menu />
-        <Notes />
+        <NoteList />
       </div>
     </div>
   )
