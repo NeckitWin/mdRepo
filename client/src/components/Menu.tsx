@@ -1,4 +1,8 @@
-const Menu = () => {
+interface MenuProps {
+  addNote: () => void;
+}
+
+const Menu = ({ addNote }: MenuProps) => {
   const menuButtons = [
     {
       id: 'sort',
@@ -38,7 +42,8 @@ const Menu = () => {
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 fill-current">
           <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
         </svg>
-      )
+      ),
+      action: addNote
     }
   ];
 
@@ -57,7 +62,7 @@ const Menu = () => {
       </div>
       <div className="p-2 flex gap-2">
         {menuButtons.map((button) => (
-          <button 
+          <button onClick={button.action}
             key={button.id}
             className={`cursor-pointer flex-1 flex items-center justify-center gap-1.5 px-3 py-1 rounded-md transition-all duration-200 shadow-sm hover:shadow-md border ${button.className}`}
           >
