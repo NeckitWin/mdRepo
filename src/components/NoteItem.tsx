@@ -12,6 +12,14 @@ const NoteItem = ({ note, deleteNote }: NoteItemProps) => {
     const [content, setContent] = useState<string>(note.content);
     const [tags, setTags] = useState<string[]>(note.tags);
 
+    const addTag = (tag: string) => {
+        setTags([...tags, tag]);
+    }
+
+    const removeTag = (tag: string) => {
+        setTags(tags.filter(t => t !== tag));
+    }
+
     return (
         <div className="bg-[#252525] p-4 rounded-lg border border-neutral-700 hover:border-neutral-600 transition flex flex-row">
             <div className="w-full">
@@ -19,14 +27,22 @@ const NoteItem = ({ note, deleteNote }: NoteItemProps) => {
                     {editMode ? <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="bg-neutral-700 text-white p-2 rounded" /> :
                         <h4 className="text-lg text-[#ECE7F6] font-semibold">{title}</h4>}
                 </div>
-                {editMode ? <textarea className="w-full h-20 mb-3 p-2 rounded bg-neutral-700 text-white resize-none" value={content} onChange={(e) => setContent(e.target.value)}></textarea> :
-                <p className="text-[#A3A3A3] mb-3 line-clamp-2">{content}</p>}
+                {editMode ? <textarea className="w-full h-20 mb-3 p-2 rounded bg-neutral-700 text-white" value={content} onChange={(e) => setContent(e.target.value)}></textarea> :
+                    <p className="text-[#A3A3A3] mb-3 line-clamp-2">{content}</p>}
                 <div className="flex gap-2 flex-wrap">
-                    {tags.map((tag, index) => ( 
-                        <span key={index} className="bg-neutral-600 text-[#ECE7F6] px-2 py-1 rounded-full text-xs">
+                    {tags.map((tag, index) => (
+                        <span key={index} className={"bg-neutral-600 text-[#ECE7F6] px-2 py-1 rounded-full text-xs" + (editMode ? " cursor-not-allowed" : "")} onClick={() => editMode && removeTag(tag)} title={editMode ? "Click to remove tag" : ""}>
                             {tag}
                         </span>
                     ))}
+                    {editMode && (
+                        <button className="bg-neutral-600 text-[#ECE7F6] px-2 py-1 rounded-full text-xs cursor-pointer" onClick={() => {
+                            const newTag = prompt("Enter new tag name:");
+                            if (newTag) {
+                                addTag(newTag);
+                            }
+                        }}>+ Add Tag</button>
+                    )}
                 </div>
             </div>
             <div className="flex flex-col items-end gap-3 w-64">
