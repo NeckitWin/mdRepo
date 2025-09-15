@@ -5,6 +5,7 @@ import type { RootState } from "../app/store";
 interface NotesState {
     notes: Note[];
     currentNoteId: string | null;
+    editNoteMode: boolean;
 }
 
 const initialState: NotesState = {
@@ -17,7 +18,8 @@ const initialState: NotesState = {
             tags: ["Test", "Test2", "Test3"]
         }
     ],
-    currentNoteId: null
+    currentNoteId: null,
+    editNoteMode: false,
 };
 
 export const notesSlice = createSlice({
@@ -62,6 +64,10 @@ export const notesSlice = createSlice({
         clearCurrentNoteId: (state) => {
             state.currentNoteId = null
         },
+
+        setEditNoteMode: (state, action: PayloadAction<boolean>) => {
+            state.editNoteMode = action.payload
+        }
     }
 });
 
@@ -71,4 +77,5 @@ export const selectCurrentNoteId = (state: RootState) => state.notes.currentNote
 export const selectCurrentNote = (state: RootState) => {
     return state.notes.notes.find(note => note.id === state.notes.currentNoteId) || null;
 }
+export const selectEditNoteMode = (state: RootState) => state.notes.editNoteMode;
 export default notesSlice.reducer;
