@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { clearCurrentNoteId, selectCurrentNote, selectEditNoteMode, setCurrentNoteId, setEditNoteMode } from "../features/notesSlice";
+import { clearCurrentNoteId, selectCurrentNote, selectEditNoteMode, setEditNoteMode } from "../features/notesSlice";
 import type { Note } from "../types/note";
 import NoteEdit from "./NoteEdit";
 import NoteView from "./NoteView";
