@@ -12,13 +12,11 @@ const App = () => {
       {!currentNoteId && <div>
         <Profile />
       </div>}
-      <div className="w-full flex flex-col gap-4">
+      <div className={"flex flex-col gap-4 "+(currentNoteId ? "w-[1300px]" : " w-full")}>
         <Menu />
         <NoteList />
       </div>
-      {currentNoteId && <div className="w-full">
-        <NoteActive />
-      </div>}
+      {currentNoteId && <NoteActive />}
     </div>
   )
 }

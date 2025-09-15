@@ -71,7 +71,7 @@ export const notesSlice = createSlice({
     }
 });
 
-export const { addNote, deleteAllNotes, deleteNote, editNote, setCurrentNoteId, clearCurrentNoteId } = notesSlice.actions;
+export const { addNote, deleteAllNotes, deleteNote, editNote, setCurrentNoteId, clearCurrentNoteId, setEditNoteMode } = notesSlice.actions;
 export const selectNotes = (state: RootState) => state.notes.notes;
 export const selectCurrentNoteId = (state: RootState) => state.notes.currentNoteId;
 export const selectCurrentNote = (state: RootState) => {

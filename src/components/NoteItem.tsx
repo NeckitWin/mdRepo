@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Note } from "../types/note";
 import { useAppDispatch } from "../app/hooks";
-import { deleteNote, editNote } from "../features/notesSlice";
+import { deleteNote, editNote, setCurrentNoteId } from "../features/notesSlice";
 
 interface NoteItemProps {
     note: Note;
@@ -28,7 +28,7 @@ const NoteItem = ({ note }: NoteItemProps) => {
     }
 
     return (
-        <div className="bg-[#252525] p-4 rounded-lg border border-neutral-700 hover:border-neutral-600 transition flex flex-row">
+        <div className="bg-[#252525] p-4 rounded-lg border border-neutral-700 hover:border-neutral-600 transition flex flex-row" onClick={() => dispatch(setCurrentNoteId(note.id))}>
             <div className="w-full">
                 <div className="flex justify-between items-start mb-2">
                     {editMode ? <input type="text" value={editedNote.title} onChange={(e) => setEditedNote({ ...editedNote, title: e.target.value })} className="bg-neutral-700 text-white p-2 rounded" /> :
