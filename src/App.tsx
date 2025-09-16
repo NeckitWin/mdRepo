@@ -1,7 +1,7 @@
 import Menu from "./components/Menu"
-import Profile from "./components/Profile"
-import NoteList from "./components/NoteList"
-import NoteActive from "./components/NoteActive"
+import Profile from "./modules/Profile"
+import NoteList from "./modules/NoteList"
+import NoteActive from "./modules/NoteActive"
 import { useAppSelector } from "./app/hooks"
 import { selectCurrentNoteId } from "./features/notesSlice"
 

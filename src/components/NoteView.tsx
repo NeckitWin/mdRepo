@@ -1,4 +1,4 @@
-import type { Note } from "../types/note";
+import type { Note } from "../lib/types";
 
 const NoteView = ({note}: {note: Note}) => {
     return (

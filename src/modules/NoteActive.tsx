@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { clearCurrentNoteId, selectCurrentNote, selectEditNoteMode, setEditNoteMode } from "../features/notesSlice";
-import type { Note } from "../types/note";
-import NoteEdit from "./NoteEdit";
-import NoteView from "./NoteView";
+import type { Note } from "../lib/types";
+import NoteEdit from "../components/NoteEdit";
+import NoteView from "../components/NoteView";
 
 const NoteActive = () => {
     const dispatch = useAppDispatch();

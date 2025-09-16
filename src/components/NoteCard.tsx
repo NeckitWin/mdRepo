@@ -1,13 +1,9 @@
 import { useState } from "react";
-import type { Note } from "../types/note";
+import type { Note } from "../lib/types";
 import { useAppDispatch } from "../app/hooks";
 import { deleteNote, editNote, setCurrentNoteId } from "../features/notesSlice";
 
-interface NoteItemProps {
-    note: Note;
-}
-
-const NoteItem = ({ note }: NoteItemProps) => {
+const NoteCard = ({ note }: {note: Note}) => {
     const dispatch = useAppDispatch();
     const [editMode, setEditMode] = useState(false);
     const [editedNote, setEditedNote] = useState<Note>(note);
@@ -65,4 +61,4 @@ const NoteItem = ({ note }: NoteItemProps) => {
     )
 }
 
-export default NoteItem;
+export default NoteCard;

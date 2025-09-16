@@ -1,6 +1,6 @@
 import { useAppSelector } from "../app/hooks";
 import { selectNotes } from "../features/notesSlice";
-import NoteItem from "./NoteItem";
+import NoteCard from "../components/NoteCard";
 
 const NoteList = () => {
     const notes = useAppSelector(selectNotes);
@@ -10,7 +10,7 @@ const NoteList = () => {
             <ul className="space-y-4 h-[700px] overflow-y-auto">
                 {notes.map((note) => (
                     <li key={note.id} >
-                        <NoteItem note={note} />
+                        <NoteCard note={note} />
                     </li>
                 ))}
             </ul>
