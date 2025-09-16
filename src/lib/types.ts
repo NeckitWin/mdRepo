@@ -16,3 +16,11 @@ export type Note = {
     date: string;
     tags: string[];
 }
+
+export type MenuButtonType = {
+    id: string;
+    label: string;
+    className?: string;
+    icon?: string;
+    action?: () => void;
+}
