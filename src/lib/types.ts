@@ -21,6 +21,6 @@ export type MenuButtonType = {
     id: string;
     label: string;
     className?: string;
-    icon?: string;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     action?: () => void;
 }
