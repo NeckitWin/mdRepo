@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Note } from "../lib/types";
 import { useAppDispatch } from "../app/hooks";
 import { deleteNote, editNote, setCurrentNoteId } from "../features/notesSlice";
@@ -7,6 +7,14 @@ const NoteCard = ({ note }: {note: Note}) => {
     const dispatch = useAppDispatch();
     const [editMode, setEditMode] = useState(false);
     const [editedNote, setEditedNote] = useState<Note>(note);
+
+    useEffect(() => {
+        setEditedNote(note);
+        
+        if (editMode) {
+            setEditMode(false);
+        }
+    }, [note]);
 
     const addTag = (tag: string) => {
         if (!editedNote.tags.includes(tag)) {
@@ -28,12 +36,12 @@ const NoteCard = ({ note }: {note: Note}) => {
             <div className="w-full">
                 <div className="flex justify-between items-start mb-2">
                     {editMode ? <input type="text" value={editedNote.title} onChange={(e) => setEditedNote({ ...editedNote, title: e.target.value })} className="bg-neutral-700 text-white p-2 rounded" /> :
-                        <h4 className="text-lg text-[#ECE7F6] font-semibold">{editedNote.title}</h4>}
+                        <h4 className="text-lg text-[#ECE7F6] font-semibold">{note.title}</h4>}
                 </div>
                 {editMode ? <textarea className="w-full h-20 mb-3 p-2 rounded bg-neutral-700 text-white" value={editedNote.content} onChange={(e) => setEditedNote({ ...editedNote, content: e.target.value })}></textarea> :
-                    <p className="text-[#A3A3A3] mb-3 line-clamp-2">{editedNote.content}</p>}
+                    <p className="text-[#A3A3A3] mb-3 line-clamp-2">{note.content}</p>}
                 <div className="flex gap-2 flex-wrap">
-                    {editedNote.tags.map((tag, index) => (
+                    {(editMode ? editedNote.tags : note.tags).map((tag, index) => (
                         <span key={index} className={"bg-neutral-600 text-[#ECE7F6] px-2 py-1 rounded-full text-xs" + (editMode ? " cursor-not-allowed" : "")} onClick={() => editMode && removeTag(tag)} title={editMode ? "Click to remove tag" : ""}>
                             {tag}
                         </span>
